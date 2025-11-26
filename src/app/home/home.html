@@ -1,0 +1,17 @@
+<!-- <h1>Welcome to Home Page</h1> -->
+
+<nav>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a> &nbsp;
+    <a routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">About</a> &nbsp;
+
+    <a routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Login</a> &nbsp;
+    <a routerLink="/admin-login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Admin</a> &nbsp;
+    <a routerLink="/api" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Route Resolver</a> &nbsp;
+    <a routerLink="/reactive" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">RXJS</a> 
+</nav>
+
+<br>
+
+<h3>Home Page Content Goes here.</h3>
+
+<router-outlet></router-outlet>

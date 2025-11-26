@@ -1,0 +1,12 @@
+<!-- <h1>Welcome to About Page!</h1> -->
+
+<nav>
+    <a routerLink="content" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Content</a> &nbsp;
+     <a routerLink="dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a> &nbsp;
+     <a routerLink="/userinfo" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">User Info</a> &nbsp;
+     <a routerLink="/products" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Products</a> &nbsp;
+     <a routerLink="/details" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Details</a> &nbsp;
+     <a routerLink="home">Back</a>
+</nav>
+
+<router-outlet></router-outlet>

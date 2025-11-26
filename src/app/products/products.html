@@ -1,0 +1,12 @@
+<h2>Products Page</h2>
+
+<p>Category: {{ category }}</p>
+<p>Sort By: {{ sort }}</p>
+
+<button (click)="filterProducts('mobile', 'price')">Mobile by Price</button>  &nbsp;
+<button (click)="filterProducts('laptop', 'rating')">Laptop by Rating</button> &nbsp;
+<button (click)="filterProducts('tv', 'popularity')">TV by Popularity</button> &nbsp;
+
+<br><br>
+
+<button (click)="goBack()">Go Back to Main Page</button>
