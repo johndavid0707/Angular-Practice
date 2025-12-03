@@ -20,7 +20,7 @@
     </ul>
 
 
-    <h2>Top 5 Posts</h2>
+    <!-- <h2>Top 5 Posts</h2> -->
 
 <ul>
   <li *ngFor="let p of posts">
@@ -30,6 +30,53 @@
   </li>
 </ul>
 
+<h2>Post</h2>
+
+<form (ngSubmit)="onSubmit(postForm)" #postForm="ngForm">
+  <input type="text" name="title" ngModel placeholder="Title"><br>
+  <input type="text" name="body" ngModel placeholder="Body"><br>
+  <button type="submit">Submit</button>
+</form>
+
+
+<h2>PUT</h2>
+
+<form (ngSubmit)="onUpdate(updateForm)" #updateForm="ngForm">
+
+  <label>Title:</label>
+  <input type="text" name="title" ngModel placeholder="Enter Title" required><br>
+
+  <label>Body:</label>
+  <input type="text" name="body" ngModel placeholder="Enter Body" required><br>
+
+  <button type="submit">Update</button>
+</form>
+
+
+<h2>PATCH</h2>
+
+
+<form (ngSubmit)="onPatch(patchForm)" #patchForm="ngForm">
+
+  <label>Title:</label>
+  <input type="text" name="title" ngModel placeholder="Enter Title"><br>
+
+  <label>Body:</label>
+  <input type="text" name="body" ngModel placeholder="Enter Body"><br>
+
+  <button type="submit">Update (PATCH)</button>
+</form>
+
+
+<h2>DELETE</h2>
+
+<form (ngSubmit)="onDelete(deleteForm)" #deleteForm="ngForm">
+
+  <label>Enter Post ID to Delete:</label>
+  <input type="number" name="id" ngModel placeholder="Enter ID" required><br>
+
+  <button type="submit">DELETE</button>
+</form>
 
 
 <router-outlet></router-outlet>
