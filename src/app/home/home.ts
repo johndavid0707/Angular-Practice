@@ -1,18 +1,120 @@
+import { CommonModule } from '@angular/common';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { combineLatest, concatMap, debounceTime, delay, distinctUntilChanged, exhaustMap, filter, forkJoin, from, fromEvent, interval, map, merge, mergeMap, Observable, of, Subject, switchMap, take, takeUntil, timer, withLatestFrom } from 'rxjs';
+import { catchError, combineLatest, concatMap, debounceTime, delay, distinctUntilChanged, exhaustMap, filter, finalize, forkJoin, from, fromEvent, interval, map, merge, mergeMap, Observable, of, retry, retryWhen, scan, Subject, Subscription, switchMap, take, takeUntil, tap, throwError, timer, withLatestFrom } from 'rxjs';
+import { ErrorHandler } from '../../services/authService/ErrorHandler/error-handler';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule, ReactiveFormsModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class Home {
+  users: any[] = [];
+  loading: boolean | undefined;
+  errorMsg: string | undefined;
+  private userSubscription!: Subscription;
+  posts: any[] = [];
+
+
+  constructor(private http: HttpClient, private errorHandler: ErrorHandler) {
+
+    // this.http.get<any[]>('https://jsonplaceholder.typicode.com/users')
+    //   .subscribe({
+    //     next: users => this.users = users,
+    //     error: err => console.error('Error :', err)
+    //   });
+
+
+
+    // Example: Transform + Log + Error Handling
+
+    // this.http.get<any[]>('https://jsonplaceholder.typicode.com/users')
+    //   .pipe(
+    //     tap(() => console.log('Request started')),
+    //     map(users => this.users = users),
+    //     catchError(error => {
+    //       console.error('Error occurred:', error);
+    //       return of([]); // Return fallback value
+    //     })
+    //   )
+    //   .subscribe(users => console.log('Active users:', users));
+
+
+
+    // Typed + Chained Example
+
+    // this.http.get<any[]>('https://jsonplaceholder.typicode.com/posts')
+    //   .pipe(
+    //     map(posts => posts.slice(0, 5)), // only first 5
+    //     tap(() => console.log('Fetched top 5 posts'))
+    //   )
+    //   .subscribe(posts => this.posts = posts);
+
+
+    //Basic Local Error Handling
+
+    // this.http.get<any[]>('https://jsonplaceholder.typicode.com/users').pipe(
+    //   catchError((error: HttpErrorResponse) => {
+    //     console.error('Error:', error.message);
+    //     return throwError(() => new Error('Something went wrong. Please try again.'));
+    //   })
+    // ).subscribe({
+    //   next: data => console.log(data),
+    //   error: err => console.log(err.message)
+    // });
+
+
+    //Centralized Error Handling Service
+
+    // this.http.get<any[]>('https://jsonplaceholder.typicode.com/users').pipe(
+    //   catchError(err => this.errorHandler.handleError(err))
+
+    // ).subscribe({
+    //   next: data => console.log(data),
+    //   error: err => console.log(err.message)
+    // });
+
+
+    //Retry Failed Requests
+
+    // this.http.get<any[]>('https://jsonplaceholder.typicode.com/users')
+    //   .pipe(
+    //     retry(2) // retry up to 2 times on error
+    //   )
+    //   .subscribe({
+    //     next: data => console.log(data),
+    //     error: err => console.error('Final error after retries', err)
+    //   });
+
+
+    //Exponential Backoff
+
+    this.http.get('https://jsonplaceholder.typicode.com/users')
+      .pipe(
+        retryWhen(errors =>
+          errors.pipe(
+            scan((acc: number, error) => {
+              if (acc >= 3) throw error; // max 3 retries
+              return acc + 1;
+            }, 0),
+            tap((acc: number) => console.log(`Retrying after ${acc * 1000}ms`)),
+            delay(1000)
+          )
+        )
+      )
+      .subscribe({
+        next: data => console.log(data),
+        error: err => console.error('Request failed after retries', err)
+      });
+
+
+  }
 
   ngOnInit() {
-
-
 
     //Example 1  Creating Observables
 
@@ -97,7 +199,7 @@ export class Home {
     //   .subscribe(console.log);
 
 
-    
+
 
     //Example 4  Combination Observables
 
@@ -124,6 +226,74 @@ export class Home {
     // main$
     //   .pipe(withLatestFrom(helper$))
     //   .subscribe(console.log);
+
+
+    //Example 5  Free Fake API to Get Request
+
+    // 1, Basic Error Handling in subscribe()
+
+    // this.http.get<any[]>('https://jsonplaceholder.typicode.com/users').subscribe({
+    //   next: users => this.users = users,
+    //   error: err => console.error('Error occurred:', err),
+    //   complete: () => console.log('Request completed')
+    // });
+
+    // 2, Using catchError() Operator
+
+    // this.http.get<any[]>('https://jsonplaceholder.typicode.com/users').pipe(
+    // catchError(err => {
+    //   console.error('Failed to load users:', err);
+    //   return of([]);
+    // })
+    // ).subscribe(users => this.users = users);
+
+    // 3, Retrying Failed Requests — retry() and retryWhen()
+
+    // this.http.get('https://jsonplaceholder.typicode.com/users').pipe(
+    //   retry(3), // Try 3 times
+    //   catchError(() => of({ error: true }))
+    // ).subscribe(console.log);
+
+    // this.http.get('https://jsonplaceholder.typicode.com/users').pipe(
+    //   retryWhen(errors => errors.pipe(
+    //     delay(1000),
+    //     retry(3)
+    //   ))
+    // ).subscribe(console.log);
+
+
+    //Example 6  Final Cleanup with finalize()
+
+    // this.loading = true;
+    // this.http.get<any[]>('https://jsonplaceholder.typicode.com/users').pipe(
+    //   finalize(() => this.loading = false)
+    // ).subscribe(users => this.users = users);
+
+    //Example 7 Graceful Error Handling Example (Combined)
+
+    // this.http.get<any[]>('https://jsonplaceholder.typicode.com/users').pipe(
+    //   retry(2),
+    //   catchError(err => {
+    //     console.error('Failed to load users:', err);
+    //     return of([]);
+    //   }),
+    //   finalize(() => this.loading = false)
+    // );
+
+
+
+    //Example 8 Cleanup: Unsubscribing to Avoid Memory Leaks
+
+    // this.userSubscription = this.http.get<any[]>('https://jsonplaceholder.typicode.com/users')
+    //   .subscribe(users => {
+    //     console.log('Users:', users);
+    //   });
+
   }
+
+  // ngOnDestroy() {
+  //   console.log('Component destroyed unsubscribing...');
+  //   this.userSubscription.unsubscribe();
+  // }
 
 }
