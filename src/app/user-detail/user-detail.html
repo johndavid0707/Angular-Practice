@@ -1,0 +1,10 @@
+<h2>Users List (httpResource Example)</h2>
+
+    @if (users.isLoading()) {
+      <p>Loading...</p>
+    } @else if (users.error()) {
+      <p>Error: {{ users.error()?.message }}</p>
+      <button (click)="users.reload()">Retry</button>
+    } @else {
+      <pre>{{ users.value() | json }}</pre>
+    }

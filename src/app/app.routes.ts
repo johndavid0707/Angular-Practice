@@ -19,6 +19,7 @@ import { Api } from './api/api';
 import { userResolver } from '../resolver/UserResolver';
 import { Error } from './error/error';
 import { ReactiveRxjs } from './reactive-rxjs/reactive-rxjs';
+import { UserDetail } from './user-detail/user-detail';
 
 export const routes: Routes = [
     
@@ -50,6 +51,7 @@ export const routes: Routes = [
      {path:'api', component: Api, resolve: { user: userResolver }},
      {path:'error', component: Error},
      {path:'reactive', component: ReactiveRxjs},
+     {path:'httpresource', component: UserDetail},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;
