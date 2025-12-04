@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { catchError, combineLatest, concatMap, debounceTime, delay, distinctUntilChanged, exhaustMap, filter, finalize, forkJoin, from, fromEvent, interval, map, merge, mergeMap, Observable, of, retry, retryWhen, scan, Subject, Subscription, switchMap, take, takeUntil, tap, throwError, timer, withLatestFrom } from 'rxjs';
 import { ErrorHandler } from '../../services/authService/ErrorHandler/error-handler';
 import { DataService } from '../../services/authService/dataservice/data-service';
+import { SKIP_AUTH } from '../../SKIP_AUTH/skip-auth.token';
 
 @Component({
   selector: 'app-home',
@@ -111,6 +112,14 @@ export class Home {
     //     next: data => console.log(data),
     //     error: err => console.error('Request failed after retries', err)
     //   });
+
+
+    //skip Auth Public API
+
+    // this.http.get('https://jsonplaceholder.typicode.com/users', {
+    //   context: new HttpContext().set(SKIP_AUTH, true)
+    // })
+    //   .subscribe(res => console.log(res));
 
 
     //Simple Caching Strategy
