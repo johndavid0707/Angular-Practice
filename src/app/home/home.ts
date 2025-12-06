@@ -131,8 +131,6 @@ export class Home {
   }
 
 
-
-
   ngOnInit() {
 
     //Example 1  Creating Observables
@@ -307,6 +305,8 @@ export class Home {
     //   .subscribe(users => {
     //     console.log('Users:', users);
     //   });
+
+    
 
   }
 

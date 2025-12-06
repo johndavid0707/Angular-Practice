@@ -20,6 +20,7 @@ import { userResolver } from '../resolver/UserResolver';
 import { Error } from './error/error';
 import { ReactiveRxjs } from './reactive-rxjs/reactive-rxjs';
 import { UserDetail } from './user-detail/user-detail';
+import { Signal } from './signals/signal/signal';
 
 export const routes: Routes = [
     
@@ -52,6 +53,7 @@ export const routes: Routes = [
      {path:'error', component: Error},
      {path:'reactive', component: ReactiveRxjs},
      {path:'httpresource', component: UserDetail},
+     {path:'signal', component: Signal},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;
