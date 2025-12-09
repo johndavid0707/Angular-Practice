@@ -8,10 +8,14 @@ import { Child } from '../child/child';
   styleUrl: './parent.css',
 })
 export class Parent {
-  // parentName = "John";
-  // parentAge = 25;
+  //Traditional Way
 
-  parentProfile = signal({ name: 'John', age: 25 });
+  parentName = "John David";
+  parentAge = 26;
+
+  //Using Signals
+
+  parentProfile = signal({ name: 'Raj', age: 25 });
 
   increaseAge() {
     this.parentProfile.update(p => ({ ...p, age: p.age + 1 }));

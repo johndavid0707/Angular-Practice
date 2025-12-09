@@ -7,10 +7,13 @@ import { Component, input, Input } from '@angular/core';
   styleUrl: './child.css',
 })
 export class Child {
-  // @Input() names!: string;
-  // @Input() ages!: number;
+  //Traditional Way
 
+  @Input() names!: string;
+  @Input() ages!: number;
 
-   profile = input.required<{ name: string; age: number }>();
-  
+  // Using Signals
+
+  profile = input.required<{ name: string; age: number }>();
+
 }

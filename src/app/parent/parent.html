@@ -4,12 +4,10 @@
 
 <!--Traditional way-->
 
-<!-- <app-child [names]="parentName" [ages]="parentAge">
-</app-child> -->
+<app-child [names]="parentName" 
+[ages]="parentAge" 
+[profile]="parentProfile()">  <!--Using signals-->
+</app-child>
 
-
-<!--Using signals-->
-
-<app-child [profile]="parentProfile()"></app-child>
-
+<!--Using Signals-->
 <button (click)="increaseAge()">Increase Age</button>
