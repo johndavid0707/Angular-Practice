@@ -21,6 +21,7 @@ import { Error } from './error/error';
 import { ReactiveRxjs } from './reactive-rxjs/reactive-rxjs';
 import { UserDetail } from './user-detail/user-detail';
 import { Signal } from './signals/signal/signal';
+import { Parent } from './parent/parent';
 
 export const routes: Routes = [
     
@@ -54,6 +55,7 @@ export const routes: Routes = [
      {path:'reactive', component: ReactiveRxjs},
      {path:'httpresource', component: UserDetail},
      {path:'signal', component: Signal},
+     {path:'parent', component: Parent},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;
