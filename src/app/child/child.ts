@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -7,7 +7,10 @@ import { Component, Input } from '@angular/core';
   styleUrl: './child.css',
 })
 export class Child {
-  @Input() name!: string;
-  @Input() age!: number;
+  // @Input() names!: string;
+  // @Input() ages!: number;
+
+
+   profile = input.required<{ name: string; age: number }>();
   
 }

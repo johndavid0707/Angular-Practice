@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Child } from '../child/child';
 
 @Component({
@@ -8,6 +8,12 @@ import { Child } from '../child/child';
   styleUrl: './parent.css',
 })
 export class Parent {
-  parentName = "John";
-  parentAge = 25;
+  // parentName = "John";
+  // parentAge = 25;
+
+  parentProfile = signal({ name: 'John', age: 25 });
+
+  increaseAge() {
+    this.parentProfile.update(p => ({ ...p, age: p.age + 1 }));
+  }
 }

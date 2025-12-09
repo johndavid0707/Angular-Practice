@@ -2,5 +2,14 @@
 
 <hr>
 
-<app-child [name]="parentName" [age]="parentAge">
-</app-child>
+<!--Traditional way-->
+
+<!-- <app-child [names]="parentName" [ages]="parentAge">
+</app-child> -->
+
+
+<!--Using signals-->
+
+<app-child [profile]="parentProfile()"></app-child>
+
+<button (click)="increaseAge()">Increase Age</button>
