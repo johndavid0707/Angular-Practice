@@ -8,6 +8,10 @@ import { Component, computed, effect, signal } from '@angular/core';
 })
 export class Signal {
 
+  profile = signal({ name: 'John Doe' });
+
+  card_id = signal('12345');  // a writable signal
+
   count = signal(0);
 
   // double = computed(() => this.count() * 2);

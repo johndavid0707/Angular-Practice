@@ -24,3 +24,17 @@
 
 <button (click)="addItem()">Add Item</button>
 <button (click)="clear()">Clear</button>
+
+<hr>
+
+<h1>Template Data Binding</h1>
+
+<h2>User Profile</h2>
+
+<!-- Interpolation using signals -->
+<p><b>Name:</b> {{ profile().name }}</p>
+
+<p><b>Card ID:</b> {{ card_id() }}</p>
+
+<!-- Using signal in input binding -->
+<input type="text" [value]="card_id()" (input)="card_id.set($any($event.target).value)" />
