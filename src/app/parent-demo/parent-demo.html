@@ -1,0 +1,10 @@
+<h2>Parent Component</h2>
+
+<p><b>Parent selectedCard:</b> {{ selectedCardSignal() }}</p>
+
+<button (click)="increaseFromParent()">Change From Parent</button>
+
+<hr>
+
+<!-- Two-way signal binding -->
+<app-child-demo [(card_id)]="selectedCardSignal"></app-child-demo>
