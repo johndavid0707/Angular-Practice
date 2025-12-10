@@ -23,6 +23,7 @@ import { UserDetail } from './user-detail/user-detail';
 import { Signal } from './signals/signal/signal';
 import { Parent } from './parent/parent';
 import { ParentDemo } from './parent-demo/parent-demo';
+import { ParentDemo2 } from './parent-demo2/parent-demo2';
 
 export const routes: Routes = [
     
@@ -58,6 +59,7 @@ export const routes: Routes = [
      {path:'signal', component: Signal},
      {path:'parent', component: Parent},
      {path:'parentdemo', component: ParentDemo},
+     {path:'parentdemo2', component: ParentDemo2},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;
