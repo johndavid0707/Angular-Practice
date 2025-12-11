@@ -25,6 +25,7 @@ import { Parent } from './parent/parent';
 import { ParentDemo } from './parent-demo/parent-demo';
 import { ParentDemo2 } from './parent-demo2/parent-demo2';
 import { Linkedsignal } from './linkedsignal/linkedsignal';
+import { ParentDemo3 } from './parent-demo3/parent-demo3';
 
 export const routes: Routes = [
     
@@ -62,6 +63,7 @@ export const routes: Routes = [
      {path:'parentdemo', component: ParentDemo},
      {path:'parentdemo2', component: ParentDemo2},
      {path:'linkedsignal', component: Linkedsignal},
+     {path:'parentdemo3', component: ParentDemo3},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;

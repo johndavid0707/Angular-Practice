@@ -1,0 +1,6 @@
+<h2>Child Component</h2>
+
+<p>Selected Card ID: {{ card_id() }}</p>
+<p>Flip Timeout: {{ flipTimeout() }}</p>
+
+<input type="number" [value]="card_id()" (input)="card_id.set($any($event.target).valueAsNumber)">
