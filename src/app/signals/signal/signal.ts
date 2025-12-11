@@ -14,6 +14,8 @@ export class Signal {
 
   count = signal(0);
 
+  counts = signal(0);
+
   // double = computed(() => this.count() * 2);
 
 
@@ -64,6 +66,16 @@ export class Signal {
 
   clear() {
     this.items.set([]);  // empty array
+  }
+
+  //Example 5 Benchmarking DOM Updates with Signals
+
+  updateCounter() {
+    console.time('Signal Update');
+    for (let i = 0; i < 1; i++) {
+      this.counts.update(c => c + 1); // only updates reactive subscribers
+    }
+    console.timeEnd('Signal Update');
   }
 
 }

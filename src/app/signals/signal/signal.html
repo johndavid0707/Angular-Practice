@@ -38,3 +38,10 @@
 
 <!-- Using signal in input binding -->
 <input type="text" [value]="card_id()" (input)="card_id.set($any($event.target).value)" />
+
+<hr>
+
+<h1>Benchmarking DOM Updates with Signals</h1>
+
+<h2>Signal Counter: {{ counts() }}</h2>
+<button (click)="updateCounter()">Update Counter</button>
