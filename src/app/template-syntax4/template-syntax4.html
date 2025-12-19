@@ -1,0 +1,41 @@
+<h2>Template Expression Enhancements</h2>
+
+
+<h3>Optional Chaining & Nullish Coalescing</h3>
+
+<p>Name: {{ user()?.profile?.name ?? 'Anonymous' }}</p>
+<p>Age: {{ user()?.profile?.age ?? 'N/A' }}</p>
+
+<!--optional-->
+
+<button (click)="user.set({ profile: { name: 'John', age: 26 } })">
+  Load User
+</button>
+
+
+
+<h3>Pipe Improvements</h3>
+
+<li>Price : {{price() | currency:'INR':'symbol':'1.2-2' }}</li>
+<li>Price : {{price() | currency:'USD':'symbol':'1.2-2' }}</li>
+
+
+
+<h3>Inline Expressions & Computed Values</h3>
+
+<li>Total Items : {{items()?.length}}</li>
+<p>Next item number: {{ (items()?.length ?? 0) + 1 }}</p>
+
+
+
+<h3>Signals in Expressions</h3>
+
+<li>Current Count: {{count()}}</li><br>
+
+<button (click)=" count.set(count() + 1)">Increment</button>
+
+
+
+<h3>Safe Calls for Functions</h3>
+
+<p>{{greet()?.('John') ?? 'Hello!'}}</p>

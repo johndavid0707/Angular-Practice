@@ -1,0 +1,9 @@
+<h2>View Transitions & Animations</h2>
+
+<h3>Basics of View Transitions</h3>
+
+@if(showPanel()){
+    <div class="panel" animate.enter="fade-in" animate.leave="fade-out">Hello, I slide in and out!</div>
+}
+
+<button (click)="showPanel.set(!showPanel())">Toggle Panel</button>

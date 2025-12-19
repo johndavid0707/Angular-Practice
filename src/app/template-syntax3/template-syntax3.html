@@ -1,0 +1,262 @@
+<h2>Template Syntax Continuation</h2>
+
+<h3>Basic Syntax For @Switch</h3>
+
+@switch(user.role){
+@case('admin'){
+<p>Welcome Admin!</p>
+}
+@case('ho'){
+<p>Welcome Head office!</p>
+}
+@case('md'){
+<p>Welcome Md!</p>
+}
+@default{
+<p>Guest View You have Limited Access!</p>
+}
+}
+
+
+<h3>Nested @Switch</h3>
+
+@switch(user.role){
+@case('admin'){
+<p>Welcome Admin! You have full access.</p>
+
+@switch(adminLevel){
+@case('super'){
+<p>Super admin access.</p>
+}
+@default{
+<p>standard Admin access</p>
+}
+}
+}
+
+@case('ho'){
+<p>Welcome Head office!</p>
+}
+@case('md'){
+<p>Welcome Md!</p>
+}
+@default{
+<p>Welcome Guest!</p>
+}
+}
+
+
+<h3>Using Signals with @Switch</h3>
+
+@switch(UserRole()){
+@case('admin'){
+<p>Welcome Back Admin!</p>
+}
+@case('ho'){
+<p>Welcome Back HeadOffice!</p>
+}
+@case('md'){
+<p>Welcome Back Md!</p>
+}
+@default{
+<p>Welcome Guest!</p>
+}
+}
+
+<button (click)="UserRole.set('admin')">Set Admin</button> &nbsp;
+<button (click)="UserRole.set('ho')">Set Ho</button> &nbsp;
+<button (click)="UserRole.set('md')">Set Md</button>
+
+
+
+<!--@defer using on timer()-->
+
+
+<h3>Using Signals with @Switch using on @Defer timer()</h3>
+
+@switch(selectedTab){
+@case('profile'){
+<div #greeting>Hello!</div>
+@defer (on timer(2000)){
+<p>Loading Profile Details...</p>
+}
+}
+
+@case('settings'){
+<p>Settings Panel</p>
+}
+
+@default{
+<p>Dashboard Panel</p>
+}
+}
+
+
+<!-- @defer using on timer() -->
+
+<!-- <h3>Using Signals with @Switch using on @Defer timer()</h3> -->
+
+<!-- @switch(selectedTab){
+@case('profile'){
+<div #profileSection style="margin-top: 1000px;">Scroll to see profile</div>
+
+@defer (on viewport(profileSection)){
+<p>Profile loaded when Visible!</p>
+}
+}
+
+@case('settings'){
+<p>Setting Panel!</p>
+}
+
+@default{
+<p>Dashboard Panel!</p>
+}
+} -->
+
+
+
+<!--@defer using on interaction()-->
+
+<!-- <h3>Using Signals with @Switch using on @Defer interaction()</h3>
+
+<button #btn>Show Profile Details</button>
+
+@switch(selectedTab){
+@case('profile'){
+
+@defer (on interaction(btn)){
+<p>Profile loaded on button click!</p>
+}
+}
+
+@case('settings'){
+<p>Setting Panel!</p>
+}
+
+@default{
+<p>Dashboard Panel!</p>
+}
+} -->
+
+
+<!--@defer using on idle-->
+
+<!-- <h3>Using Signals with @Switch using on @Defer interaction()</h3>
+
+@switch(selectedTab){
+@case('profile'){
+
+@defer (on idle){
+<p>Profile loaded when brower is idle!</p>
+}
+}
+
+@case('settings'){
+<p>Setting Panel!</p>
+}
+
+@default{
+<p>Dashboard Panel!</p>
+}
+} -->
+
+
+
+<!--@defer using on immediate-->
+
+<!-- <h3>Using Signals with @Switch using on @Defer interaction()</h3>
+
+@switch(selectedTab){
+@case('profile'){
+<h3>Profile Tab!</h3>
+@defer(on immediate){
+<p>Profile details loaded immediately after UI</p>
+}
+}
+@case('settings'){
+<p>Setting Panel!</p>
+}
+@default{
+<p>Dashboard Panel</p>
+}
+} -->
+
+
+<!--@defer using on timer() another example using placeholder-->
+
+<h3>Placeholder & Fallback Content</h3>
+
+@switch(selectedTab){
+@case('profile'){
+@defer(on timer(5000)){
+<p>Welcome to @Defer Content!</p>
+}
+
+@placeholder{
+<p>Loading Please wait...</p>
+}
+}
+@case('settings'){
+<p>Setting Panel!</p>
+}
+@default{
+<p>Dashboad Panel!</p>
+}
+}
+
+
+<!--Signals Integration-->
+
+<h3>Signals Integration</h3>
+
+@defer(on timer(3000)){
+<p>{{productDetails()?.specs ?? 'No Specs Available!'}}</p>
+}
+
+@placeholder{
+<p>Please wait....</p>
+}
+
+<button (click)="productDetails.set({specs: 'Ram: 8GB, ROM: 128GB'})">Load Details</button>
+
+
+
+
+<!--Combining @defer with @if / @for-->
+
+<h2>Combining @Defer with @If / @For</h2>
+
+@for(product of products; track product.product_id){
+<h3>Product Name : {{product.name}}</h3>
+@defer(on timer(2000)){
+@if(product.specs){
+<li>Product Specs : {{product.specs}}</li>
+}
+@else{
+<li>Out of stock!</li>
+}
+}
+@placeholder{
+<p>Please Wait....</p>
+}
+}
+
+
+
+<!--Quick Demo: Lazy Product List-->
+
+<h2>Quick Demo: Lazy Product List</h2>
+
+@for(product of products_details(); track product.id){
+    @defer(on timer(4000)){
+      <li>{{product.specs || 'Specs not Loaded yet'}}</li>
+    }
+    @placeholder{
+        <li>Please wait...</li>
+    }
+}
+
+<!-- <button (click)="products_details.update(list => list.map(p => ({ ...p, specs: 'Updated specs!' })))">List all Details</button> -->
+
+<button (click)="loadAllSpecs()">List all Items</button>

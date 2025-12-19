@@ -26,6 +26,11 @@ import { ParentDemo } from './parent-demo/parent-demo';
 import { ParentDemo2 } from './parent-demo2/parent-demo2';
 import { Linkedsignal } from './linkedsignal/linkedsignal';
 import { ParentDemo3 } from './parent-demo3/parent-demo3';
+import { TemplateSyntax } from './template-syntax/template-syntax';
+import { TemplateSyntax2 } from './template-syntax2/template-syntax2';
+import { TemplateSyntax3 } from './template-syntax3/template-syntax3';
+import { TemplateSyntax4 } from './template-syntax4/template-syntax4';
+import { TemplateSyntax5 } from './template-syntax5/template-syntax5';
 
 export const routes: Routes = [
     
@@ -64,6 +69,11 @@ export const routes: Routes = [
      {path:'parentdemo2', component: ParentDemo2},
      {path:'linkedsignal', component: Linkedsignal},
      {path:'parentdemo3', component: ParentDemo3},
+     {path:'template', component: TemplateSyntax},
+     {path:'template2', component: TemplateSyntax2},
+     {path:'template3', component: TemplateSyntax3},
+     {path:'template4', component: TemplateSyntax4},
+     {path:'template5', component: TemplateSyntax5},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;

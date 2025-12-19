@@ -1,0 +1,67 @@
+<h2>Template Syntax Continuation</h2>
+
+
+<h3>Basic Syntax For @For</h3>
+
+@for(item of items; track item.id) {
+  <li>{{item.id}} - {{ item.name }}</li>
+}
+
+
+<h3>Local Variables</h3>
+
+@for (
+  fruit of fruits;
+  track fruit.name;
+  let i = $index;
+  let total = $count;
+  let isFirst = $first;
+  let isLast = $last
+) {
+  <li>
+    {{ i }} / {{ total }} :
+    {{ fruit.name }}
+    <span *ngIf="isFirst"> (First)</span>
+    <span *ngIf="isLast"> (Last)</span>
+  </li>
+}
+
+
+<h3>Nested Loops</h3>
+
+@for(category of categories; track category.name){
+    <li>{{category.name}}</li>
+    @for(item of category.items; track item.name){
+        <li>- {{item.name}}</li>
+    }
+}
+
+
+<h3>Using Signals with @For</h3>
+
+@for(product of products(); track product.id){
+   <li>{{product.name}}</li>
+}
+
+<button (click)="addProduct()">Add Product</button>
+
+
+<h3>Conditional Iteration</h3>
+
+@for(staff of staffs; track staff.id){
+  @if(staff.id > 1){
+    <li>{{staff.name}}</li>
+  }
+}
+
+
+<h3>Quick Demo</h3>
+
+@for(product of products(); track product.id){
+  @if(product.stock > 0){
+    <li>{{product.name}} is in stock!</li>
+  }
+  @else{
+    <li>{{product.name}} out of stock!</li>
+  }
+}

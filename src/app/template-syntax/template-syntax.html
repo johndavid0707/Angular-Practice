@@ -1,0 +1,136 @@
+<nav>
+    <a routerLink="/template" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Template Syntax</a> &nbsp;
+    <a routerLink="/template2" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Template Syntax 2</a> &nbsp;
+    <a routerLink="/template3" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Template Syntax 3</a> &nbsp;
+    <a routerLink="/template4" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Template Syntax 4</a> &nbsp;
+    <a routerLink="/template5" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Template Syntax 5</a>
+</nav>
+
+<br>
+
+<h2>Template-syntax Old Way</h2>
+
+<!-- Older Way *ngIf, *ngFor, ngSwitch-->
+
+<h3>*ngIf</h3>
+
+<div *ngIf="isLoggedIn; else logout">This div is visible when the condition is true.</div>
+
+<ng-template #logout>
+    This div is not visible when the condition is false.
+</ng-template>
+
+<h3>*ngFor</h3>
+
+<li *ngFor="let item of items; index as i; trackBy: trackById">
+    {{i}} - {{item.name}}
+</li>
+
+<h3>ngSwitch</h3>
+
+<div [ngSwitch]="user.role">
+    <div *ngSwitchCase="'admin'">Admin Panel</div>
+    <div *ngSwitchCase="'ho'">HO Panel</div>
+    <div *ngSwitchCase="'md'">MD Panel</div>
+    <div *ngSwitchDefault>Guest View</div>
+</div>
+
+<hr>
+
+<h2>Template-syntax New Way</h2>
+
+<!-- New Way @If, @For, @else if-->
+
+<h3>@If</h3>
+
+@if(users.isLoggedIn) {
+<p>Welcome {{ users.name }}</p>
+} @else {
+<p>Please Log in</p>
+}
+
+<h3>@For</h3>
+
+@for (staff of staffs; track staff.id; let i = $index) {
+@if(staff.available){
+<li>
+    {{ i }} - {{ staff.name }}
+</li>
+}
+}
+
+<h3>@Else If</h3>
+
+@if(user.role === 'admin'){
+<p>Admin Dashboard</p>
+}
+@else if(user.role === 'ho'){
+<p>Ho Dashboard</p>
+}
+@else if(user.role === 'md'){
+<p>Md Dashboard</p>
+}
+@else{
+<p>User Dashboard</p>
+}
+
+<h3>@Switch</h3>
+
+@switch (user.role) {
+@case ('admin') {
+<p>Admin Panel</p>
+}
+@case ('ho') {
+<p>HO Panel</p>
+}
+@case ('md') {
+<p>MD Panel</p>
+}
+@default {
+<p>Guest View</p>
+}
+}
+
+<h3>Using Local Variables</h3>
+
+@let bonus = 10;
+
+@if(user_details().points >= 100){
+ <p>{{user_details().name}} earned a bonus {{bonus}} points!</p>
+}
+@else{
+    <p>{{user_details().name}}, keep going to earn a bonus!</p>
+}
+
+
+<h3>Nesting @If Blocks</h3>
+
+@if(user_details().isLoggedIn){
+    @let bonus = 10;
+    @if(user_details().points >=100){
+        <p> {{user_details().name}} earned a bonus {{bonus}} points!</p>
+    }
+    @else{
+        <p>{{user_details().name}}, keep going to earn a bonus!</p>
+    }
+}
+@else{
+    <p>Please Login to access your Dashboard</p>
+}
+
+
+<h3>Conditional Rendering with Signals</h3>
+
+@if(LoggedIn()){
+    <p>Welcome To Home Page!</p>
+}
+@else{
+    <p>Please Login</p>
+}
+
+<button (click)="LoggedIn.set(!LoggedIn())">
+    {{ LoggedIn() ? 'Logout' : 'Login' }}
+</button>
+
+
+
