@@ -1,0 +1,63 @@
+<h2>Template Driven Forms</h2>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+ <label>Name: </label>
+ <input name = "name" [(ngModel)]="user.name" required> <br>
+
+ <label>Email:</label>
+ <input name = "email" [(ngModel)] = "user.email" email required>  <br>
+
+ <button [disabled] ="f.invalid">Submit</button>  
+</form>
+
+
+<hr>
+
+<h3>Live Form Tracking Demo</h3>
+
+<form #formRef="ngForm" (ngSubmit)="onSubmit(f)">
+  <label>Name:</label>
+  <input
+    name="name"
+    [(ngModel)]="user.name"
+    required
+    #nameRef="ngModel"
+    [class.invalid]="nameRef.invalid && nameRef.touched"
+    [class.valid]="nameRef.valid"
+  >
+
+  <p *ngIf="nameRef.touched && nameRef.invalid" style="color:red">
+    Name is required
+  </p> <br>
+
+  <label>Email:</label>
+  <input
+    name="email"
+    [(ngModel)]="user.email"
+    email
+    required
+    #emailRef="ngModel"
+    [class.invalid]="emailRef.invalid && emailRef.touched"
+    [class.valid]="emailRef.valid"
+  >
+
+  <p *ngIf="emailRef.touched && emailRef.invalid" style="color:red">
+    Email is required
+  </p> <br>
+
+  <button [disabled]="formRef.invalid">Submit</button>
+</form>
+
+<h4>🔍 Live Form Data:</h4>
+<pre>{{ user | json }}</pre>
+
+<h4>🧭 Form State:</h4>
+<ul>
+  <li>Form valid: {{ formRef.valid }}</li>
+  <li>Form dirty: {{ formRef.dirty }}</li>
+  <li>Name valid: {{ nameRef.valid }}</li>
+  <li>Email valid: {{ emailRef.valid }}</li>
+</ul>
+
+
+
