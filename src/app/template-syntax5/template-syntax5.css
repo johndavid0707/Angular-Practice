@@ -1,0 +1,80 @@
+.panel {
+  margin-top: 10px;
+  padding: 20px;
+  background-color: lightblue;
+  border-radius: 8px;
+}
+
+/* Enter animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Leave animation */
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+
+.item {
+  padding: 8px;
+  margin: 6px 0;
+  background: #71a9d1;
+  border-radius: 6px;
+  width: 150px;
+}
+
+
+.defer {
+  padding: 8px;
+  margin: 6px 0;
+  background: #8993df;
+  border-radius: 10px;
+  width: 330px;
+}
+
+.product {
+  padding: 8px;
+  margin: 6px 0;
+  background: #e5819d;
+  border-radius: 10px;
+  width: 130px;
+}
+
+/* ENTER animation */
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); /* from top */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* LEAVE animation */
+@keyframes slide-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px); /* exit to top */
+  }
+}

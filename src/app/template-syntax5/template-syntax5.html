@@ -2,8 +2,52 @@
 
 <h3>Basics of View Transitions</h3>
 
-@if(showPanel()){
-    <div class="panel" animate.enter="fade-in" animate.leave="fade-out">Hello, I slide in and out!</div>
+<button (click)="toggle()">Toggle Panel</button>
+
+@if (showPanel()) {
+  <div class="panel"
+       animate.enter="fade-in"
+       animate.leave="fade-out">
+    Hello! I appear and disappear smoothly 🙂
+  </div>
 }
 
-<button (click)="showPanel.set(!showPanel())">Toggle Panel</button>
+<hr>
+
+<h3>Animating Lists (@For)</h3>
+
+@for(item of items(); track item){
+ <p class="item" animate.enter="fade-in" animate.leave="fade-out">{{item}}</p>
+}
+
+<button (click)="addFunction()">Add Item</button>
+<button (click)="removeFunction()">Remove Item</button>
+
+<hr>
+
+<h3>Deferred Content Animations</h3>
+
+@defer(on timer(2000)){
+    <p class="defer" animate.enter="fade-in">Lazy Loaded Content appears with a smooth fade!</p>
+}
+
+<hr>
+
+<h3>Custom Transition Parameters</h3>
+
+@if(products()){
+    <div class="product" animate.enter="slide-in 300ms ease-in" animate.leave="slide-out 300ms ease-out">Sliding From Top!</div>
+}
+
+<hr>
+
+<h3>Quick Demo: Interactive Dashboard</h3>
+
+<button (click)="toggleStats()">Toggle Stats</button>
+
+@if(showStats()){
+    <p animate.enter="fade-in" animate.leave="fade-out"> <b>Stats:</b></p>
+    @for(stat of stats(); track stat){
+        <li animate.enter="fade-in" animate.leave="fade-out">{{stat}}</li>
+    }
+}
