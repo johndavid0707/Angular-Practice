@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, ViewChild } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-template-driven-forms',
@@ -10,6 +10,14 @@ import { FormsModule } from '@angular/forms';
 })
 export class TemplateDrivenForms {
 user = {name: '', email: ''};
+
+//Accessing the Form in Component
+
+@ViewChild('formRef') form!: NgForm;
+
+ngAfterViewInit() {
+  console.log(this.form.value);
+}
 
 onSubmit(form: any){
 console.log('Form Data:', form.value)
