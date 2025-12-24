@@ -1,0 +1,21 @@
+<!--Cross-field Validation-->
+
+<h2>Register Form</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<label>Password:</label>
+<input type="password" formControlName="password"> <br>
+
+<label>Confirm Password:</label>
+<input type="password" formControlName="confirmPassword"> <br>
+
+<div *ngIf="form.errors?.['mismatch'] && form.touched" style="color:red">
+    Password do not match!
+</div>
+
+<button [disabled]="form.invalid">Register</button>
+</form>
+
+<h4>Live Usage: </h4>
+
+<pre>{{form.value | json}}</pre>

@@ -1,0 +1,47 @@
+<nav>
+    <a routerLink="/reactive-forms" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Reactive Form</a> &nbsp;
+    <a routerLink="/register-forms" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Register Form</a> &nbsp;
+</nav>
+
+<h2>Reactive Forms</h2>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <label>Name:</label>
+    <input formControlName="name">
+    <div *ngIf ="profileForm.get('name')?.invalid && profileForm.get('name')?.touched">
+     Name is required (min 3 chars)
+    </div> <br>
+
+    <label>Email:</label>
+    <input formControlName="email">
+    <div *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched">
+        Enter a valid Email
+    </div> <br>
+
+    
+     <!-- Address Group -->
+    <div formGroupName="address">
+    <h4>Address</h4>
+
+    <label>City:</label>
+    <input formControlName="city">
+    <div *ngIf="profileForm.get('address.city')?.invalid && profileForm.get('address.city')?.touched">
+      City is required
+    </div>
+
+    <br>
+
+    <label>Pincode:</label>
+    <input formControlName="pincode">
+    <div *ngIf="profileForm.get('address.pincode')?.invalid && profileForm.get('address.pincode')?.touched">
+      Enter valid 6-digit pincode
+    </div>
+  </div>
+
+  <br>
+
+    <button [disabled]="profileForm.invalid">Submit</button>
+</form>
+
+<h4>Live Form Data</h4>
+<pre>{{profileForm.value | json}}</pre>

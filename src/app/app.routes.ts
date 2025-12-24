@@ -32,6 +32,8 @@ import { TemplateSyntax3 } from './template-syntax3/template-syntax3';
 import { TemplateSyntax4 } from './template-syntax4/template-syntax4';
 import { TemplateSyntax5 } from './template-syntax5/template-syntax5';
 import { TemplateDrivenForms } from './template-driven-forms/template-driven-forms';
+import { ReactiveForm } from './reactive-form/reactive-form';
+import { RegisterForm } from './register-form/register-form';
 
 export const routes: Routes = [
     
@@ -76,6 +78,8 @@ export const routes: Routes = [
      {path:'template4', component: TemplateSyntax4},
      {path:'template5', component: TemplateSyntax5},
      {path:'template-forms', component: TemplateDrivenForms},
+     {path:'reactive-forms', component: ReactiveForm},
+     {path:'register-forms', component: RegisterForm},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;
