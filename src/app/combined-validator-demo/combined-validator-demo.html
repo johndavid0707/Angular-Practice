@@ -1,0 +1,10 @@
+<h2>Combined Validator Demo</h2>
+
+<label>User Name: </label>
+
+<input [formControl]="username" placeholder="Enter username">
+
+<div *ngIf="username.pending">⏳ Checking availability...</div>
+<div *ngIf="username.hasError('noSpaces')">❌ No spaces allowed!</div>
+<div *ngIf="username.hasError('usernameTaken')">❌ Username not available</div>
+<div *ngIf="username.valid && username.dirty">✅ Username looks good!</div>

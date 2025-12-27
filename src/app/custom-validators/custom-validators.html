@@ -1,0 +1,35 @@
+<nav>
+    <a routerLink="/custom-validators" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Custom-Validators</a> &nbsp;
+    <a routerLink="/async-validators" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Async-Validators</a> &nbsp;
+    <a routerLink="/user-form" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">User-Form</a> &nbsp; 
+    <a routerLink="/combine-validator" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Demo-Combine-Validator</a> &nbsp;
+</nav>
+
+<h2>Custom Validators</h2>
+
+<h3>NoSpaces</h3>
+
+<form>
+    <label>User Name: </label>
+    <input [formControl]="username">
+
+    <!--Username contains space it shows error-->
+
+    <div *ngIf="username.hasError('noSpaces') && username.touched">
+        Username cannot contain spaces!
+    </div>
+
+    <!--Username must have 3 words with space otherwise it shows error-->
+
+    <div *ngIf="username.hasError('minWords') && username.touched">
+        Minimum {{ username.getError('minWords').required }} words required.
+        You entered {{ username.getError('minWords').actual }}.
+    </div>
+
+    <!--Username does not allow reserved names. if i enter reserved names it shows error-->
+
+    <div *ngIf="username.hasError('reservedName') && username.touched">
+        This username is reserved.
+    </div>
+
+</form>

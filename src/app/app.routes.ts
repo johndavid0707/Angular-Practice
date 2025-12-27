@@ -34,6 +34,10 @@ import { TemplateSyntax5 } from './template-syntax5/template-syntax5';
 import { TemplateDrivenForms } from './template-driven-forms/template-driven-forms';
 import { ReactiveForm } from './reactive-form/reactive-form';
 import { RegisterForm } from './register-form/register-form';
+import { CustomValidators } from './custom-validators/custom-validators';
+import { AsyncValidators } from './async-validators/async-validators';
+import { UserForm } from './user-form/user-form';
+import { CombinedValidatorDemo } from './combined-validator-demo/combined-validator-demo';
 
 export const routes: Routes = [
     
@@ -80,6 +84,10 @@ export const routes: Routes = [
      {path:'template-forms', component: TemplateDrivenForms},
      {path:'reactive-forms', component: ReactiveForm},
      {path:'register-forms', component: RegisterForm},
+     {path:'custom-validators', component: CustomValidators},
+     {path:'async-validators', component: AsyncValidators},
+     {path:'user-form', component: UserForm},
+     {path:'combine-validator', component: CombinedValidatorDemo},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;

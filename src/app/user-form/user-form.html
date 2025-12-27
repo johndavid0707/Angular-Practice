@@ -1,0 +1,21 @@
+<h2>User Form</h2>
+
+<form [formGroup]="form" (ngSubmit)="onsubmit()">
+  <label>Username:</label>
+  <input formControlName="username">
+  <div *ngIf="form.get('username')?.pending">⏳ Checking...</div>
+  <div *ngIf="form.get('username')?.hasError('reservedName')">❌ Reserved name</div>
+  <div *ngIf="form.get('username')?.hasError('usernameTaken')">❌ Username not available</div>
+
+  <br>
+
+  <label>
+    <input type="checkbox" formControlName="promo"> Apply Promo Code
+  </label>
+  <input formControlName="promoCode" placeholder="Enter Promo Code">
+  <div *ngIf="form.get('promoCode')?.hasError('required')">Promo code is required</div>
+
+  <br>
+  
+  <button [disabled]="form.invalid">Submit</button>
+</form>

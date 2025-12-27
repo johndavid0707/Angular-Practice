@@ -1,0 +1,9 @@
+<h2>Async Validators</h2>
+
+<form>
+    <label>User Name: </label>
+    <input [formControl]="username" placeholder="Enter username">
+    <div *ngIf="username.pending">⏳ Checking...</div>
+    <div *ngIf="username.hasError('usernameTaken')">❌ Username already taken</div>
+    <div *ngIf="username.valid && username.dirty">✅ Available!</div>
+</form>
