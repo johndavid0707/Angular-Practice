@@ -1,0 +1,31 @@
+<h2>Dynamic Form Creation Using API</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <div *ngFor="let field of fields">
+    <label>{{ field.label }}</label><br>
+
+    <input
+      [type]="field.type"
+      [formControlName]="field.key"
+    />
+
+    <div style="color:red" *ngIf="form.get(field.key)?.touched">
+      <span *ngIf="form.get(field.key)?.hasError('required')">
+        {{ field.label }} is required
+      </span>
+      <span *ngIf="form.get(field.key)?.hasError('email')">
+        Invalid email
+      </span>
+    </div>
+
+    <br><br>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+
+<hr>
+
+<h3>Live Form Value</h3>
+<pre>{{ form.value | json }}</pre>

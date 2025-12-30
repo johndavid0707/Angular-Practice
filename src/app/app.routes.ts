@@ -41,6 +41,10 @@ import { CombinedValidatorDemo } from './combined-validator-demo/combined-valida
 import { AdvancedForm } from './advanced-form/advanced-form';
 import { FormArray } from '@angular/forms';
 import { FormsArray } from './form-array/form-array';
+import { CrossFieldValidation } from './cross-field-validation/cross-field-validation';
+import { DynamicFormCreation } from './dynamic-form-creation/dynamic-form-creation';
+import { DynamicFormCreation2 } from './dynamic-form-creation2/dynamic-form-creation2';
+import { ValidationMessageHandling } from './validation-message-handling/validation-message-handling';
 
 export const routes: Routes = [
     
@@ -93,6 +97,10 @@ export const routes: Routes = [
      {path:'combine-validator', component: CombinedValidatorDemo},
      {path:'advanced-form', component: AdvancedForm},
      {path:'form-array', component: FormsArray},
+     {path:'cross-field', component: CrossFieldValidation},
+     {path:'dynamic-form', component: DynamicFormCreation},
+     {path:'dynamic-form2', component: DynamicFormCreation2},
+     {path:'validation-message', component: ValidationMessageHandling},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;

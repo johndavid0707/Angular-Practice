@@ -1,0 +1,21 @@
+<h2>Cross Field Validation</h2>
+
+<form [formGroup]="passwordForm" (ngSubmit)="onSubmit()">
+    <label>Password: </label>
+    <input formControlName="password"> <br>
+
+    <label>Confirm Password: </label>
+    <input formControlName="confirmPassword"> <br>
+
+    <div *ngIf="passwordForm.errors?.['passwordMismatch'] && passwordForm.touched" style="color:red">
+        Password do not match!
+    </div>
+
+    <button [disabled]="passwordForm.invalid">Submit</button>
+</form>
+
+<h3>Live Data: </h3>
+
+<pre>
+    {{passwordForm.value | json}}
+</pre>
