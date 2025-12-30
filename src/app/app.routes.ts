@@ -38,6 +38,9 @@ import { CustomValidators } from './custom-validators/custom-validators';
 import { AsyncValidators } from './async-validators/async-validators';
 import { UserForm } from './user-form/user-form';
 import { CombinedValidatorDemo } from './combined-validator-demo/combined-validator-demo';
+import { AdvancedForm } from './advanced-form/advanced-form';
+import { FormArray } from '@angular/forms';
+import { FormsArray } from './form-array/form-array';
 
 export const routes: Routes = [
     
@@ -88,6 +91,8 @@ export const routes: Routes = [
      {path:'async-validators', component: AsyncValidators},
      {path:'user-form', component: UserForm},
      {path:'combine-validator', component: CombinedValidatorDemo},
+     {path:'advanced-form', component: AdvancedForm},
+     {path:'form-array', component: FormsArray},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;

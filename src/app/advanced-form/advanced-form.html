@@ -1,0 +1,29 @@
+<nav>
+    <a routerLink="/advanced-form" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Advanced-Forms</a> &nbsp;
+    <a routerLink="/form-array" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Form-Array</a> &nbsp;
+</nav>
+
+<h2>Nested Form Groups</h2>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+<label>Name: </label>
+<input formControlName="name"><br>
+
+<label>Phone: </label>
+<input formControlName="phone"> <br>
+
+<div formGroupName="address">
+
+<p>Address</p>
+
+<label>City: </label>
+<input formControlName="city"> <br>
+
+<label>Pincode: </label>
+<input formControlName="pincode"> <br>
+
+<button [disabled] = "profileForm.invalid">Submit</button>
+
+</div>
+
+</form>

@@ -1,0 +1,32 @@
+<h2>Form Array — Handling Dynamic Lists</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label>Name: </label>
+    <input type="text" formControlName="name"> <br>
+
+    <h4>Phone Number</h4>
+
+    <div formArrayName="phones">
+
+        <div *ngFor="let phone of phones.controls; let i = index">
+            <input type="number" [formControlName]="i">
+            <button type="button" (click)="removePhone(i)">Remove</button>
+        </div>
+    </div>
+
+    <br>
+
+    <button type="button" (click)="addPhone()">➕ Add Phone</button>
+
+    <br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+<hr>
+
+<h3>Form Value: </h3>
+
+<pre>
+    {{form.value | json}}
+</pre>
