@@ -1,2 +1,30 @@
 <h2>Validation Message Handling</h2>
 
+<!--Approach 1-->
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+<!--Email-->
+<label>Email: </label>
+<input type="email" formControlName="email" required email> <br>
+
+<div class="error">
+     {{ getErrorMessage('email') }}
+  </div>
+
+<!--Password-->
+<label>Password: </label>
+<input type="password" formControlName="password"> <br>
+
+<div class="error">
+     {{ getErrorMessage('password') }}
+  </div>
+
+<button [disabled]="form.invalid">Submit</button>
+</form>
+
+<h3>Live Data</h3>
+
+<pre>
+    {{form.value | json}}
+</pre>
