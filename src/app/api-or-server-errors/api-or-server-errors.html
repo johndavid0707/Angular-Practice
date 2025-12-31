@@ -1,0 +1,25 @@
+<h2>API / Server Errors</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label>Email:</label>
+  <input type="email" formControlName="email" placeholder="Email">
+  <br>
+
+  <!-- Client-side validation -->
+  <div *ngIf="email.invalid && (email.dirty || email.touched)" style="color: red">
+    <small *ngIf="email.errors?.['required']">Email is required</small>
+    <small *ngIf="email.errors?.['email']">Enter a valid email</small>
+  </div>
+
+  <!-- Server-side validation -->
+  <div *ngIf="email.hasError('emailTaken')" style="color: red">
+    Email already exists
+  </div>
+
+  <!-- General submission error -->
+  <div *ngIf="submissionError" style="color: red; margin-top: 10px">
+    {{ submissionError }}
+  </div>
+
+  <button type="submit">Submit</button>
+</form>

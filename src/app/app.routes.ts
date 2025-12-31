@@ -45,6 +45,9 @@ import { CrossFieldValidation } from './cross-field-validation/cross-field-valid
 import { DynamicFormCreation } from './dynamic-form-creation/dynamic-form-creation';
 import { DynamicFormCreation2 } from './dynamic-form-creation2/dynamic-form-creation2';
 import { ValidationMessageHandling } from './validation-message-handling/validation-message-handling';
+import { ErrorHandlingForms } from './error-handling-forms/error-handling-forms';
+import { ApiOrServerErrors } from './api-or-server-errors/api-or-server-errors';
+import { CenteralizedErrorDisplay } from './centeralized-error-display/centeralized-error-display';
 
 export const routes: Routes = [
     
@@ -101,6 +104,9 @@ export const routes: Routes = [
      {path:'dynamic-form', component: DynamicFormCreation},
      {path:'dynamic-form2', component: DynamicFormCreation2},
      {path:'validation-message', component: ValidationMessageHandling},
+     {path:'error-handling-forms', component: ErrorHandlingForms},
+     {path:'api-server-errors', component: ApiOrServerErrors},
+     {path:'centeralized-error', component: CenteralizedErrorDisplay},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;

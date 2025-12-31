@@ -1,0 +1,45 @@
+<nav>
+    <a routerLink="/error-handling-forms" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Error-Handling</a> &nbsp;
+    <a routerLink="/api-server-errors" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">API/Server-Errors</a> &nbsp; 
+    <a routerLink="/centeralized-error" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Centeralized-Error-Display</a> &nbsp;
+</nav>
+
+<h2>Control-level Errors</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label>Email: </label>
+    <input type="email" formControlName="email" placeholder="Email"> <br>
+
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" style="color: red">
+        <small *ngIf="email.errors?.['required']">Email is required</small>
+        <small *ngIf="email.errors?.['email']">Enter a valid email</small>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
+
+
+<hr>
+
+<h2>Group-level Errors</h2>
+
+<form [formGroup]="passwordForm">
+    <label>Password: </label>
+    <input formControlName="password"> <br>
+
+    <label>Confirm Password: </label>
+    <input formControlName="confirmPassword"> <br>
+
+    <div *ngIf="passwordForm.errors?.['passwordMismatch'] && passwordForm.touched" style="color:red">
+        Password do not match!
+    </div>
+</form>
+
+<h3>Live Data: </h3>
+
+<pre>
+    {{passwordForm.value | json}}
+</pre>
+
+<hr>
+

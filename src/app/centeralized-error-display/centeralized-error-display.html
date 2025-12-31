@@ -1,0 +1,18 @@
+<h2>Centralized Error Display</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <!-- Email -->
+  <label>Email</label><br>
+  <input type="email" formControlName="email">
+  <app-form-errors [control]="form.get('email')"></app-form-errors>    <!--app-form-errors - from form-error component selector name-->
+  <br><br>
+
+  <!-- Password -->
+  <label>Password</label><br>
+  <input type="password" formControlName="password">
+  <app-form-errors [control]="form.get('password')"></app-form-errors>
+  <br><br>
+
+  <button type="submit">Submit</button>
+</form>
