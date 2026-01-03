@@ -48,6 +48,8 @@ import { ValidationMessageHandling } from './validation-message-handling/validat
 import { ErrorHandlingForms } from './error-handling-forms/error-handling-forms';
 import { ApiOrServerErrors } from './api-or-server-errors/api-or-server-errors';
 import { CenteralizedErrorDisplay } from './centeralized-error-display/centeralized-error-display';
+import { SubmitForm } from './Submitting-and-Resetting/submit-form/submit-form';
+import { DemoDynamicForm } from './Submitting-and-Resetting/demo-dynamic-form/demo-dynamic-form';
 
 export const routes: Routes = [
     
@@ -107,6 +109,8 @@ export const routes: Routes = [
      {path:'error-handling-forms', component: ErrorHandlingForms},
      {path:'api-server-errors', component: ApiOrServerErrors},
      {path:'centeralized-error', component: CenteralizedErrorDisplay},
+     {path:'submit-form', component: SubmitForm},
+     {path:'demo-form', component: DemoDynamicForm},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;

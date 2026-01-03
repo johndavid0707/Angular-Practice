@@ -1,0 +1,17 @@
+<h2>Demo Form</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <input formControlName="name" placeholder="Name">
+
+  <div formArrayName="addresses">
+    <div *ngFor="let addr of addresses.controls; let i = index" [formGroupName]="i">
+      <input formControlName="city" placeholder="City">
+      <input formControlName="zip" placeholder="ZIP">
+      <button (click)="removeAddress(i)">Remove</button>
+      <div *ngIf="addr.errors?.['invalidCityZip']">City/ZIP mismatch</div>
+    </div>
+  </div>
+
+  <button (click)="addAddress()">Add Address</button>
+  <button type="submit" [disabled]="form.invalid">Save</button>
+</form>

@@ -1,0 +1,14 @@
+a{
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+}
+
+.active{
+    font-weight: bold;
+    color: blue;
+}
+
+nav{
+    background-color:aliceblue;
+}

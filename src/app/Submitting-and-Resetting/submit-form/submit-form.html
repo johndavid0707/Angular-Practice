@@ -1,0 +1,42 @@
+<nav>
+    <a routerLink="/submit-form" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Submit-Form</a> &nbsp;
+    <a routerLink="/demo-form" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Demo-Form</a> &nbsp;
+</nav>
+
+<h2>1. Basic Submit Form</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label>Name: </label>
+    <input type="text" formControlName="name"> <br>
+
+    <label>Age: </label>
+    <input type="number" formControlName="age"> <br><br>
+
+    <button type="submit" [disabled]="form.invalid || form.pending">Submit</button>
+</form>
+
+<hr>
+
+<h2>2. Submission State Indicators</h2>
+
+<form [formGroup]="formSubmission" (ngSubmit)="submit()">
+    <label>Name: </label>
+    <input type="text" formControlName="username">
+    <div *ngIf="formSubmission.get('username')?.touched && formSubmission.get('username')?.invalid" style="color: red">
+    Name is required
+    </div> <br>
+
+    <label>Email: </label>
+    <input type="email" formControlName="email"> 
+      <div *ngIf="formSubmission.get('email')?.touched && formSubmission.get('email')?.invalid" style="color: red">
+    Valid email is required
+     </div> <br><br>
+
+    <button type="submit" [disabled]="isSubmitting || !formSubmission.dirty || formSubmission.invalid">
+    {{ isSubmitting ? 'Saving...' : 'Save' }}
+  </button>
+</form>
+
+<div *ngIf="isSubmitting">⏳ Saving...</div>
+
+<p *ngIf="submissionMessage">{{ submissionMessage }}</p>
