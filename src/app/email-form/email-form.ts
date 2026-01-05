@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { debounceTime, filter, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-email-form',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './email-form.html',
   styleUrl: './email-form.css',
 })

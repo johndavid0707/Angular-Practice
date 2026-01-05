@@ -55,6 +55,7 @@ import { UnsavedChangesGuard } from '../guard/canActive/UnsavedChangesGuard/Unsa
 import { Feedback } from './Route-Protection-For-Unsaved-Form/feedback/feedback';
 import { FormBuilderForms } from './form-builder-forms/form-builder-forms';
 import { EmailForm } from './email-form/email-form';
+import { CentralizingFormState } from './centralizing-form-state/centralizing-form-state';
 
 export const routes: Routes = [
     
@@ -120,6 +121,7 @@ export const routes: Routes = [
      {path:'feedback', component: Feedback, canDeactivate: [UnsavedChangesGuard]},
      {path:'formbuilder-form', component: FormBuilderForms},
      {path:'email-form', component: EmailForm},
+     {path:'centralizing', component: CentralizingFormState},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;

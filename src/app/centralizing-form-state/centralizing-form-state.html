@@ -1,0 +1,18 @@
+<h2>Centralizing Form State</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label>Name: </label>
+    <input type="text" placeholder="Enter Name" formControlName="name"> <br>
+
+    <label>Email: </label>
+    <input type="email" placeholder="Enter Email" formControlName="email"> <br><br>
+
+    <button [disabled]="form.invalid">Submit</button>
+</form>
+
+<hr>
+
+<h3>Live Data: </h3>
+<pre>
+    {{form.value | json}}
+</pre>
