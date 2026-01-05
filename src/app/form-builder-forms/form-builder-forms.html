@@ -1,0 +1,19 @@
+<h2>Form Builder Forms</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+<label>Name: </label>
+<input type="text" placeholder="Enter Your Name" formControlName="name"> <br>
+
+<label>Age: </label>
+<input type="number" placeholder="Enter Your Age" formControlName="age"> <br>
+
+<button type="submit" [disabled]="form.invalid">Submit</button>
+</form>
+
+<hr>
+
+<h3>Live Data: </h3>
+
+<pre>
+    {{form.value | json}}
+</pre>

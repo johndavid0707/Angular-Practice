@@ -53,6 +53,7 @@ import { DemoDynamicForm } from './Submitting-and-Resetting/demo-dynamic-form/de
 import { ProfileEditor } from './Route-Protection-For-Unsaved-Form/profile-editor/profile-editor';
 import { UnsavedChangesGuard } from '../guard/canActive/UnsavedChangesGuard/UnsavedChangesGuard';
 import { Feedback } from './Route-Protection-For-Unsaved-Form/feedback/feedback';
+import { FormBuilderForms } from './form-builder-forms/form-builder-forms';
 
 export const routes: Routes = [
     
@@ -116,6 +117,7 @@ export const routes: Routes = [
      {path:'demo-form', component: DemoDynamicForm},
      {path:'profile-editor', component: ProfileEditor, canDeactivate: [UnsavedChangesGuard]},
      {path:'feedback', component: Feedback, canDeactivate: [UnsavedChangesGuard]},
+     {path:'formbuilder-form', component: FormBuilderForms},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;
