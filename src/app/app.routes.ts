@@ -54,6 +54,7 @@ import { ProfileEditor } from './Route-Protection-For-Unsaved-Form/profile-edito
 import { UnsavedChangesGuard } from '../guard/canActive/UnsavedChangesGuard/UnsavedChangesGuard';
 import { Feedback } from './Route-Protection-For-Unsaved-Form/feedback/feedback';
 import { FormBuilderForms } from './form-builder-forms/form-builder-forms';
+import { EmailForm } from './email-form/email-form';
 
 export const routes: Routes = [
     
@@ -118,6 +119,7 @@ export const routes: Routes = [
      {path:'profile-editor', component: ProfileEditor, canDeactivate: [UnsavedChangesGuard]},
      {path:'feedback', component: Feedback, canDeactivate: [UnsavedChangesGuard]},
      {path:'formbuilder-form', component: FormBuilderForms},
+     {path:'email-form', component: EmailForm},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;

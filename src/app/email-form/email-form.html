@@ -1,0 +1,27 @@
+<h2>Reactive State Flow with RxJS</h2>
+
+<h3>Email Form</h3>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <label>Email: </label>
+    <input type="email" placeholder="Enter Email" formControlName="email"> <br>
+
+    <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" style=" color: red;">
+        Invalid Email Address
+    </div>
+
+    <label>Country: </label>
+    <select formControlName="country">
+        <option value="">Select country</option>
+        <option value="USA">USA</option>
+        <option value="India">India</option>
+        <option value="France">France</option>
+        <option value="Germany">Germany</option>
+        <option value="UK">UK</option>
+    </select> <br>
+
+    <label>State:</label>
+    <input type="text" formControlName="state" placeholder="Enter State" />
+
+    <button [disabled]="form.invalid">Save</button>
+</form>
