@@ -50,6 +50,9 @@ import { ApiOrServerErrors } from './api-or-server-errors/api-or-server-errors';
 import { CenteralizedErrorDisplay } from './centeralized-error-display/centeralized-error-display';
 import { SubmitForm } from './Submitting-and-Resetting/submit-form/submit-form';
 import { DemoDynamicForm } from './Submitting-and-Resetting/demo-dynamic-form/demo-dynamic-form';
+import { ProfileEditor } from './Route-Protection-For-Unsaved-Form/profile-editor/profile-editor';
+import { UnsavedChangesGuard } from '../guard/canActive/UnsavedChangesGuard/UnsavedChangesGuard';
+import { Feedback } from './Route-Protection-For-Unsaved-Form/feedback/feedback';
 
 export const routes: Routes = [
     
@@ -111,6 +114,8 @@ export const routes: Routes = [
      {path:'centeralized-error', component: CenteralizedErrorDisplay},
      {path:'submit-form', component: SubmitForm},
      {path:'demo-form', component: DemoDynamicForm},
+     {path:'profile-editor', component: ProfileEditor, canDeactivate: [UnsavedChangesGuard]},
+     {path:'feedback', component: Feedback, canDeactivate: [UnsavedChangesGuard]},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;

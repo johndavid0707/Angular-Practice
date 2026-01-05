@@ -1,0 +1,23 @@
+<nav>
+    <a routerLink="/profile-editor" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Route-Protection-for-Unsaved-Form</a> &nbsp;
+    <a routerLink="/feedback" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Feedback-Form</a> &nbsp;
+</nav>
+
+<h2>Implementing a Guard for Unsaved Forms</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<label>Name: </label>
+<input type="text" formControlName="name"> <br>
+
+<label>Email: </label>
+<input type="email" formControlName="email"><br>
+
+<button type="submit" [disabled]="form.invalid">Save</button>
+</form>
+
+<hr>
+
+<p>
+  <strong>Form status:</strong>
+  {{ form.dirty ? 'Unsaved changes' : 'No changes' }}
+</p>

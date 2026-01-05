@@ -1,0 +1,17 @@
+<h2>Feedback Form</h2>
+
+<h3>Handling Template-driven Forms</h3>
+
+<form #feedbackForm="ngForm" (ngSubmit)="submitForm()">
+
+    <label>Name: 
+    <input type="text" name="name" ngModel required> 
+    </label> <br>
+    
+    <label>Message: 
+       <textarea name="message" ngModel required></textarea>
+    </label> <br>
+
+    <button type="submit" [disabled]="feedbackForm.invalid">Save</button>
+    
+</form>
