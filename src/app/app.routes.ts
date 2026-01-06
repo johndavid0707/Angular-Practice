@@ -56,6 +56,11 @@ import { Feedback } from './Route-Protection-For-Unsaved-Form/feedback/feedback'
 import { FormBuilderForms } from './form-builder-forms/form-builder-forms';
 import { EmailForm } from './email-form/email-form';
 import { CentralizingFormState } from './centralizing-form-state/centralizing-form-state';
+import { DynamicComponentCreation } from './dynamic-component-creation/dynamic-component-creation';
+import { ViewContainerRefComponent } from './dynamic-component-creation/view-container-ref-component/view-container-ref-component';
+import { InputsComponent } from './dynamic-component-creation/inputs-component/inputs-component';
+import { OutputsComponent } from './dynamic-component-creation/outputs-component/outputs-component';
+import { LifecycleHooksComponent } from './dynamic-component-creation/lifecycle-hooks-component/lifecycle-hooks-component';
 
 export const routes: Routes = [
     
@@ -122,6 +127,11 @@ export const routes: Routes = [
      {path:'formbuilder-form', component: FormBuilderForms},
      {path:'email-form', component: EmailForm},
      {path:'centralizing', component: CentralizingFormState},
+     {path:'dynamic-component-creation', component: DynamicComponentCreation},
+     {path:'view-container-ref-component', component: ViewContainerRefComponent},
+     {path:'inputs-component', component: InputsComponent},
+     {path:'outputs-component', component: OutputsComponent},
+     {path:'lifecycle-hooks', component: LifecycleHooksComponent},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;
