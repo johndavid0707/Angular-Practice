@@ -62,6 +62,7 @@ import { InputsComponent } from './dynamic-component-creation/inputs-component/i
 import { OutputsComponent } from './dynamic-component-creation/outputs-component/outputs-component';
 import { LifecycleHooksComponent } from './dynamic-component-creation/lifecycle-hooks-component/lifecycle-hooks-component';
 import { MiniDemo } from './dynamic-component-creation/mini-demo/mini-demo';
+import { ZonelessRendering } from './zoneless-rendering/zoneless-rendering';
 
 export const routes: Routes = [
     
@@ -134,6 +135,7 @@ export const routes: Routes = [
      {path:'outputs-component', component: OutputsComponent},
      {path:'lifecycle-hooks', component: LifecycleHooksComponent},
      {path:'mini-demo', component: MiniDemo},
+     {path:'zoneless-rendering', component: ZonelessRendering},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;
