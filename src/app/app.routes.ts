@@ -61,6 +61,7 @@ import { ViewContainerRefComponent } from './dynamic-component-creation/view-con
 import { InputsComponent } from './dynamic-component-creation/inputs-component/inputs-component';
 import { OutputsComponent } from './dynamic-component-creation/outputs-component/outputs-component';
 import { LifecycleHooksComponent } from './dynamic-component-creation/lifecycle-hooks-component/lifecycle-hooks-component';
+import { MiniDemo } from './dynamic-component-creation/mini-demo/mini-demo';
 
 export const routes: Routes = [
     
@@ -132,6 +133,7 @@ export const routes: Routes = [
      {path:'inputs-component', component: InputsComponent},
      {path:'outputs-component', component: OutputsComponent},
      {path:'lifecycle-hooks', component: LifecycleHooksComponent},
+     {path:'mini-demo', component: MiniDemo},
 
     {path: '**', redirectTo: ''}
 ]satisfies Routes;
